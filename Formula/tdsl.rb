@@ -7,16 +7,16 @@ class Tdsl < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-aarch64.tar.gz"
-      sha256 "PLACEHOLDER_MACOS_AARCH64_SHA256"
+      sha256 "ce1594f3608262cc6a0bd7a131075c43bf2bc8e2c4b558cb071da2c79c6acc53"
     else
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-x86_64.tar.gz"
-      sha256 "PLACEHOLDER_MACOS_X86_64_SHA256"
+      sha256 "ae704b657afbb9e0a3116cf552aac8c9dead1c92c67d4c60f15034ffe06bf504"
     end
   end
 
   on_linux do
     url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
-    sha256 "PLACEHOLDER_LINUX_X86_64_SHA256"
+    sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
   end
 
   def install
