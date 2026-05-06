@@ -1,7 +1,7 @@
 class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
-  version "1.2.2"
+  version "1.3.0"
   license "MIT"
 
   on_macos do
