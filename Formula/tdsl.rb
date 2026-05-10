@@ -1,24 +1,24 @@
 class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
-  version "1.4.0"
+  url "https://github.com/keroway/timeline-dsl/releases/download/v1.4.1/tdsl-linux-x86_64.tar.gz"
+  version "1.4.1"
+  sha256 "e7a2d16d0d8db33d041d6b84eaebfbb29de7cf646b806931f2046327ca79ac8e"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-aarch64.tar.gz"
-      sha256 "ce1594f3608262cc6a0bd7a131075c43bf2bc8e2c4b558cb071da2c79c6acc53"
+      sha256 "77fdda04b12322a6dab9b35e8b245fe95e46ab7a3a8a9e2663e70e00d60abe7f"
     else
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-x86_64.tar.gz"
-      sha256 "ae704b657afbb9e0a3116cf552aac8c9dead1c92c67d4c60f15034ffe06bf504"
+      sha256 "80bf12e67ea3b098cb41a6680d743d32bb8e693cb33e92a63e9307d1f374719c"
     end
   end
 
   on_linux do
-    depends_on arch: :x86_64
-    on_intel do
-      url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
-      sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
+    on_arm do
+      disable! date: "2024-01-01", because: "no ARM64 Linux binary is available"
     end
   end
 
