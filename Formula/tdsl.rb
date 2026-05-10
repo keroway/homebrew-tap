@@ -15,8 +15,10 @@ class Tdsl < Formula
   end
 
   on_linux do
-    url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
-    sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
+    on_intel do
+      url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
+      sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
+    end
   end
 
   def install
