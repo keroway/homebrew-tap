@@ -4,6 +4,9 @@ class Tdsl < Formula
   version "1.4.0"
   license "MIT"
 
+  url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
+  sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-aarch64.tar.gz"
@@ -17,11 +20,6 @@ class Tdsl < Formula
   on_linux do
     on_arm do
       disable! date: "2024-01-01", because: "no ARM64 Linux binary is available"
-    end
-
-    on_intel do
-      url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
-      sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
     end
   end
 
