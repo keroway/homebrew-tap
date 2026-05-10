@@ -1,11 +1,9 @@
 class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
-  version "1.4.0"
-  license "MIT"
-
-  url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
+  url "https://github.com/keroway/timeline-dsl/releases/download/v1.4.0/tdsl-linux-x86_64.tar.gz"
   sha256 "b91ecf1ac083c1663457d0781aca49e91f237f21f5a049a0864b3bc4bdaa2a14"
+  license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
