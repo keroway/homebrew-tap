@@ -2,7 +2,7 @@ class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
   url "https://github.com/keroway/timeline-dsl/releases/download/v1.4.1/tdsl-linux-x86_64.tar.gz"
-  version "1.4.1"
+  version "1.7.0"
   sha256 "e7a2d16d0d8db33d041d6b84eaebfbb29de7cf646b806931f2046327ca79ac8e"
   license "MIT"
 
