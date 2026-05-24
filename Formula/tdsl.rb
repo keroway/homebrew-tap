@@ -1,9 +1,7 @@
 class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
-  url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
   version "1.11.0"
-  sha256 "563fad01a4595383683a23aaf29acb5553cceae32a035105c921d19c3ca179a0"
   license "MIT"
 
   on_macos do
@@ -17,8 +15,12 @@ class Tdsl < Formula
   end
 
   on_linux do
-    on_arm do
-      disable! date: "2024-01-01", because: "no ARM64 Linux binary is available"
+    if Hardware::CPU.arm?
+      url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-aarch64.tar.gz"
+      sha256 "7dea223bec893325c9b2215f65f7aa7e1f8994df4f7ab98244f3b4d9d8291748"
+    else
+      url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
+      sha256 "563fad01a4595383683a23aaf29acb5553cceae32a035105c921d19c3ca179a0"
     end
   end
 
