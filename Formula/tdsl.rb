@@ -1,18 +1,18 @@
 class Tdsl < Formula
   desc "Timeline DSL compiler — text-based timelines with Wikidata import"
   homepage "https://github.com/keroway/timeline-dsl"
-  url "https://github.com/keroway/timeline-dsl/releases/download/v1.4.1/tdsl-linux-x86_64.tar.gz"
-  version "1.10.1"
-  sha256 "e7a2d16d0d8db33d041d6b84eaebfbb29de7cf646b806931f2046327ca79ac8e"
+  url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-linux-x86_64.tar.gz"
+  version "1.11.0"
+  sha256 "563fad01a4595383683a23aaf29acb5553cceae32a035105c921d19c3ca179a0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-aarch64.tar.gz"
-      sha256 "77fdda04b12322a6dab9b35e8b245fe95e46ab7a3a8a9e2663e70e00d60abe7f"
+      sha256 "a815fce4720dc7877514b9a0845d98916ec258f406b9b1d90c166e9bc4844521"
     else
       url "https://github.com/keroway/timeline-dsl/releases/download/v#{version}/tdsl-macos-x86_64.tar.gz"
-      sha256 "80bf12e67ea3b098cb41a6680d743d32bb8e693cb33e92a63e9307d1f374719c"
+      sha256 "4a87957332fa7627606b90dada277e313e6eeeb6ce84ae7d39e9c79f607c09dd"
     end
   end
 
