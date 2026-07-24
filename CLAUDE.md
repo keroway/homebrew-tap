@@ -27,6 +27,7 @@ curl -sL <URL> | shasum -a 256
 
 - `tdsl-macos-aarch64.tar.gz`
 - `tdsl-macos-x86_64.tar.gz`
+- `tdsl-linux-aarch64.tar.gz`
 - `tdsl-linux-x86_64.tar.gz`
 
 ### 2. formula の編集
@@ -34,8 +35,8 @@ curl -sL <URL> | shasum -a 256
 `Formula/tdsl.rb` の以下を更新:
 
 - `version` — 新バージョン番号
-- トップレベル `url` / `sha256` — Linux x86_64 用
-- `on_macos` ブロック内の各 `sha256` — macOS arm64 / x86_64 用
+- `on_macos` ブロック内の各 `url` / `sha256` — macOS arm64 / x86_64 用
+- `on_linux` ブロック内の各 `url` / `sha256` — Linux arm64 / x86_64 用
 
 ### 3. 動作確認
 
@@ -51,6 +52,7 @@ CI (`brew test-bot`) が通れば `pr-pull` ラベルを付けてマージ。
 
 ## 注意事項
 
-- `on_linux > on_arm` ブロックで ARM64 Linux を `disable!` している（バイナリ未提供のため）
-- `brew readall --os=all --arch=all` を通すため、トップレベルにも Linux x86_64 の `url`/`sha256` が必要
+- `on_macos` / `on_linux` それぞれの block 内で arm64 / x86_64 両方に実バイナリの `url`/`sha256` を
+  用意しており、`brew readall --os=all --arch=all` の対象マトリクスを全てカバーしているため、
+  トップレベルの `url`/`sha256` は不要
 - このリポジトリは **public 必須**（`brew tap` はパブリックリポジトリのみ対応）
