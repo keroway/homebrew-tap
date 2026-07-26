@@ -76,7 +76,7 @@ CI (`brew test-bot`) が通ったあと、メンテナが `pr-pull` ラベルを
 |--------------|----------|------|
 | [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | `main` への push / Pull Request | macOS (Apple Silicon / Intel) と Linux での tap 構文チェック、および Pull Request 時の formula ビルドテスト |
 | [`publish.yml`](.github/workflows/publish.yml) (`brew pr-pull`) | Pull Request への `pr-pull` ラベル付与 | `brew test-bot` がビルドした bottle を取り込んで `main` に push し、ブランチを削除 |
-| [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | `main` への push / Pull Request / 週次スケジュール | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるシークレットスキャン |
+| [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | `main` への push / Pull Request / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるシークレットスキャン |
 
 ## ドキュメント
 

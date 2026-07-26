@@ -76,7 +76,7 @@ Once CI (`brew test-bot`) is green, a maintainer applies the `pr-pull` label to 
 |----------|---------|--------------|
 | [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | push to `main`, pull request | Tap syntax check on macOS (Apple Silicon / Intel) and Linux, plus a formula build test on pull requests |
 | [`publish.yml`](.github/workflows/publish.yml) (`brew pr-pull`) | `pr-pull` label applied to a pull request | Pulls the bottles built by `brew test-bot`, pushes them to `main`, and deletes the branch |
-| [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | push to `main`, pull request, weekly schedule | Secret scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
+| [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | push to `main`, pull request, weekly schedule, manual dispatch | Secret scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
 
 ## Documentation
 
