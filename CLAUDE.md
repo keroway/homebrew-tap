@@ -5,12 +5,19 @@
 ## リポジトリ構造
 
 ```
-Formula/        # formula ファイル (.rb)
+Formula/                     # formula ファイル (.rb)
 .github/
   workflows/
-    brew-pr-pull.yml   # ボトルのマージ用ワークフロー
-    brew-test-bot.yml  # CI (syntax check + build test)
-  dependabot.yml       # GitHub Actions の自動バージョン更新
+    tests.yml                # CI (brew test-bot — tap syntax check + build test)
+    publish.yml              # brew pr-pull (pr-pull ラベルで bottle 添付 → main へ push)
+    gitleaks.yml             # シークレットスキャン (keroway/.github の reusable workflow を呼び出す)
+  dependabot.yml             # GitHub Actions の自動バージョン更新
+  pull_request_template.md   # PR テンプレート
+README.md                    # README (英語版)
+README.ja.md                 # README (日本語版)
+SECURITY.md                  # 脆弱性の報告手順
+CLAUDE.md                    # このファイル (AGENTS.md は CLAUDE.md へのシンボリックリンク)
+LICENSE                      # tap 自体のライセンス (BSD 2-Clause)
 ```
 
 ## Formula の更新手順
