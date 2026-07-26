@@ -17,9 +17,10 @@ formula のバージョンを上げた場合のみ記入。それ以外の PR �
 -->
 
 - [ ] `version` を更新した
-- [ ] `tdsl-macos-aarch64.tar.gz` の SHA256 を更新した
-- [ ] `tdsl-macos-x86_64.tar.gz` の SHA256 を更新した
-- [ ] `tdsl-linux-x86_64.tar.gz` の SHA256 を更新した（トップレベル `url`/`sha256`）
+- [ ] `tdsl-macos-aarch64.tar.gz` の SHA256 を更新した（`on_macos` / arm64）
+- [ ] `tdsl-macos-x86_64.tar.gz` の SHA256 を更新した（`on_macos` / x86_64）
+- [ ] `tdsl-linux-aarch64.tar.gz` の SHA256 を更新した（`on_linux` / arm64）
+- [ ] `tdsl-linux-x86_64.tar.gz` の SHA256 を更新した（`on_linux` / x86_64）
 
 ## 検証
 
