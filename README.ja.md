@@ -9,9 +9,7 @@
 keroway のツールのバイナリ配布を Homebrew 経由で行います。対応プラットフォーム:
 
 - macOS (Apple Silicon / Intel)
-- Linux x86_64
-
-> ARM64 Linux は **未対応** です (upstream でバイナリが提供されていないため)。
+- Linux (ARM64 / x86_64)
 
 ## Formulae
 
@@ -71,6 +69,14 @@ brew audit --strict             Formula/<name>.rb
 ```
 
 CI (`brew test-bot`) が通ったあと、メンテナが `pr-pull` ラベルを付与し、bottle 添付とマージが自動実行されます。
+
+### CI ワークフロー
+
+| ワークフロー | トリガー | 内容 |
+|--------------|----------|------|
+| [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | `main` への push / Pull Request | macOS (Apple Silicon / Intel) と Linux での tap 構文チェック、および Pull Request 時の formula ビルドテスト |
+| [`publish.yml`](.github/workflows/publish.yml) (`brew pr-pull`) | Pull Request への `pr-pull` ラベル付与 | `brew test-bot` がビルドした bottle を取り込んで `main` に push し、ブランチを削除 |
+| [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | `main` への push / Pull Request / 週次スケジュール | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるシークレットスキャン |
 
 ## ドキュメント
 
