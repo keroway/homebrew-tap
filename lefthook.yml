@@ -1,0 +1,15 @@
+# lefthook config for keroway/tap
+# Install: `brew install lefthook` && `lefthook install`
+# Docs: https://lefthook.dev/
+
+pre-commit:
+  commands:
+    brew-style:
+      glob: "*.rb"
+      run: brew style Formula/*.rb
+
+pre-push:
+  commands:
+    brew-audit:
+      glob: "*.rb"
+      run: brew audit --strict Formula/*.rb
