@@ -86,9 +86,21 @@ span main 10..50 "test span" {};
 
 ## シェル補完
 
-`tdsl` の bash / zsh / fish 補完はインストール時に自動生成され、Homebrew の補完セットアップに
-組み込まれます — zsh/fish は追加設定不要です。手動生成したい場合（Homebrew が自動配線しない
-シェル向けなど）は `tdsl completions <shell>` を実行してください。
+`tdsl` の bash / zsh / fish 補完はインストール時に自動生成されます。ただし Homebrew は既定では
+外部 tap の補完を自動リンクしないため、有効化するには一度だけ以下を実行してください:
+
+```sh
+brew completions link
+```
+
+そのうえで、各シェルが Homebrew の補完を読み込むようにします:
+
+- **zsh**: `.zshrc` の `compinit` より前に `FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"` を追加
+- **bash**: `brew install bash-completion` を入れ、[Homebrew のドキュメント](https://docs.brew.sh/Shell-Completion)に従って読み込む
+- **fish**: 追加設定不要 — fish は `$(brew --prefix)/share/fish/vendor_completions.d` を自動的に読み込みます
+
+補完スクリプトを手動生成したい場合（Homebrew が自動配線しないシェル向けなど）は
+`tdsl completions <shell>` を実行してください。
 
 ## アップデート
 
@@ -135,7 +147,7 @@ push する前にほとんどのスタイル/audit 上の問題が検出され�
 formula の build/test 自体はローカルではなく Pull Request の CI が実行します。
 バージョンアップの典型的なフロー:
 
-1. 新リリースの SHA256 を取得: `curl -sL <アセット URL> | shasum -a 256`
+1. 新リリースの SHA256 を取得: `curl -fsSL <アセット URL> -o <アセットファイル> && shasum -a 256 <アセットファイル>`
 2. formula の `url` / `sha256` を更新（対象アセット一覧は `CLAUDE.md` を参照）
 3. PR を作成 — `brew test-bot` が通ったら、メンテナが `pr-pull` ラベルを付与し bottle 添付とマージが行われます
 

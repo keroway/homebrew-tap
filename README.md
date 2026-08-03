@@ -86,9 +86,20 @@ Full command reference and DSL syntax: <https://keroway.github.io/timeline-dsl/>
 
 ## Shell completions
 
-Bash, zsh, and fish completions for `tdsl` are generated automatically at install time and picked
-up by Homebrew's completion setup — no extra configuration needed for zsh/fish. To generate them
-manually (e.g. for a shell Homebrew doesn't wire up automatically): `tdsl completions <shell>`.
+Bash, zsh, and fish completions for `tdsl` are generated automatically at install time. Homebrew
+does not auto-link completions from external taps by default, so run this once to enable them:
+
+```sh
+brew completions link
+```
+
+Then make sure your shell loads Homebrew's completions:
+
+- **zsh**: add `FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"` before `compinit` in your `.zshrc`
+- **bash**: `brew install bash-completion` and source it per the [Homebrew docs](https://docs.brew.sh/Shell-Completion)
+- **fish**: no extra setup — fish reads `$(brew --prefix)/share/fish/vendor_completions.d` automatically
+
+To generate a completion script manually (e.g. for a shell Homebrew doesn't wire up automatically): `tdsl completions <shell>`.
 
 ## Updating
 
@@ -135,7 +146,7 @@ so most style/audit issues surface before you even push.
 
 Formula build/test itself runs in pull request CI, not locally. Typical version-bump flow:
 
-1. Fetch the new release's SHA256s: `curl -sL <asset URL> | shasum -a 256`
+1. Fetch the new release's SHA256s: `curl -fsSL <asset URL> -o <asset file> && shasum -a 256 <asset file>`
 2. Update the `url` / `sha256` pairs in the formula (see `CLAUDE.md` for the per-tool asset list)
 3. Open a PR — once `brew test-bot` is green, a maintainer applies the `pr-pull` label to attach bottles and merge
 

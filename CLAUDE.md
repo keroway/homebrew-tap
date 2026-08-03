@@ -17,7 +17,7 @@ Formula/                     # formula ファイル (.rb)
   renovate.json5             # Renovate による依存関係の自動更新設定
   pull_request_template.md   # PR テンプレート
 justfile                     # ローカルタスク (build/test/lint/format/check) — brew CLI への薄い委譲
-lefthook.yml                 # pre-commit: brew style / pre-push: brew audit --strict
+lefthook.yml                 # pre-commit: brew style / pre-push: brew test-bot --only-tap-syntax
 README.md                    # README (英語版)
 README.ja.md                 # README (日本語版)
 SECURITY.md                  # 脆弱性の報告手順 (英語/日本語併記)
