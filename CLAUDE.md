@@ -49,7 +49,7 @@ curl -sL <URL> | shasum -a 256
 
 ```sh
 brew test-bot --only-tap-syntax
-brew test-bot --only-formulae
+# Formula の build / test は pull request CI が実行する。
 ```
 
 ### 4. PR 作成 → マージ
