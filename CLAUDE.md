@@ -6,16 +6,21 @@
 
 ```
 Formula/                     # formula ファイル (.rb)
+.claude/                     # Claude Code の共有設定 (settings.json, hooks/)
 .github/
   workflows/
     tests.yml                # CI (brew test-bot — tap syntax check + build test)
     publish.yml              # brew pr-pull (pr-pull ラベルで bottle 添付 → main へ push)
     gitleaks.yml             # シークレットスキャン (keroway/.github の reusable workflow を呼び出す)
-  dependabot.yml             # GitHub Actions の自動バージョン更新
+    osv-scan.yml             # OSV 脆弱性スキャン (keroway/.github の reusable workflow を呼び出す)
+    workflow-lint.yml        # ワークフロー/スクリプト lint (keroway/.github の reusable workflow を呼び出す)
+  renovate.json5             # Renovate による依存関係の自動更新設定
   pull_request_template.md   # PR テンプレート
+justfile                     # ローカルタスク (build/test/lint/format/check) — brew CLI への薄い委譲
+lefthook.yml                 # pre-commit: brew style / pre-push: brew audit --strict
 README.md                    # README (英語版)
 README.ja.md                 # README (日本語版)
-SECURITY.md                  # 脆弱性の報告手順
+SECURITY.md                  # 脆弱性の報告手順 (英語/日本語併記)
 CLAUDE.md                    # このファイル (AGENTS.md は CLAUDE.md へのシンボリックリンク)
 LICENSE                      # tap 自体のライセンス (BSD 2-Clause)
 ```
@@ -48,7 +53,8 @@ curl -sL <URL> | shasum -a 256
 ### 3. 動作確認
 
 ```sh
-brew test-bot --only-tap-syntax
+just check
+# = brew test-bot --only-tap-syntax + brew style Formula/*.rb
 # Formula の build / test は pull request CI が実行する。
 ```
 
