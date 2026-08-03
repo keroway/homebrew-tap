@@ -12,4 +12,4 @@ pre-push:
   commands:
     brew-audit:
       glob: "*.rb"
-      run: brew audit --strict Formula/*.rb
+      run: brew test-bot --only-tap-syntax
