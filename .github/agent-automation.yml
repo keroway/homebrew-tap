@@ -1,0 +1,5 @@
+# Explicit repository-level opt-in for shared Issue automation.
+enabled: true
+allow_merge: true
+max_issues_per_cycle: 1
+interval: 30m
