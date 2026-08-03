@@ -15,7 +15,7 @@ lint:
 format:
     brew style --fix Formula/*.rb
 
-# audit --strict / style をまとめて実行（PR 前の全通し確認）
+# tap syntax / style をまとめて実行（PR 前の全通し確認）
 check:
-    brew audit --strict Formula/*.rb
+    brew test-bot --only-tap-syntax
     brew style Formula/*.rb

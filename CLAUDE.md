@@ -41,16 +41,15 @@ curl -sL <URL> | shasum -a 256
 
 `Formula/tdsl.rb` の以下を更新:
 
-- `version` — 新バージョン番号
+- 各 `url` — 新バージョン番号を含むリリース URL
 - `on_macos` ブロック内の各 `url` / `sha256` — macOS arm64 / x86_64 用
 - `on_linux` ブロック内の各 `url` / `sha256` — Linux arm64 / x86_64 用
 
 ### 3. 動作確認
 
 ```sh
-brew install --build-from-source Formula/tdsl.rb
-brew test Formula/tdsl.rb
-brew audit --strict Formula/tdsl.rb
+brew test-bot --only-tap-syntax
+brew test-bot --only-formulae
 ```
 
 ### 4. PR 作成 → マージ

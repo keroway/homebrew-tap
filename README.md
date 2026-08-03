@@ -63,9 +63,8 @@ brew untap keroway/tap
 Pull requests are welcome — typical flow for bumping a formula:
 
 ```sh
-brew install --build-from-source Formula/<name>.rb
-brew test                       Formula/<name>.rb
-brew audit --strict             Formula/<name>.rb
+brew test-bot --only-tap-syntax
+brew test-bot --only-formulae
 ```
 
 Once CI (`brew test-bot`) is green, a maintainer applies the `pr-pull` label to attach bottles and merge.
