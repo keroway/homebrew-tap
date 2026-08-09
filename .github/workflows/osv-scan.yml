@@ -1,4 +1,9 @@
 # 各リポジトリの .github/workflows/osv-scan.yml に配置する呼び出し元。
+# このリポジトリは Formula(*.rb) だけで構成されており、osv-scanner のスキャン対象が
+# 原理的に存在しない ("No package sources found" で exit 128 になる)。
+# その「対象なし」だけを成功として扱うため allow-no-package-sources で opt-in している
+# (keroway/beamsg の docs/adr/0028-osv-scan-no-package-sources.md)。
+# 実際の脆弱性検出やツール取得失敗など、他の理由の失敗は従来どおり赤くなる。
 name: osv-scan
 
 on:
@@ -18,3 +23,6 @@ concurrency:
 jobs:
   scan:
     uses: keroway/.github/.github/workflows/reusable-osv-scan.yml@main # zizmor: ignore[unpinned-uses] — 同一アカウント内の自前 reusable workflow。SHA ピン化は Phase 2 で検討
+    with:
+      # ADR-0028: Formula だけのリポジトリはスキャン対象を持たない。「対象なし」だけを成功扱いにする。
+      allow-no-package-sources: true
