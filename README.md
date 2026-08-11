@@ -19,7 +19,7 @@ This tap distributes binaries built from keroway's tools.
 
 > [!NOTE]
 > CI (`tests.yml`) currently builds and tests Linux formulae on `ubuntu-latest` (x86_64) only.
-> Linux ARM64 bottles are published but not exercised by CI.
+> The Linux ARM64 tarball is published in the formula but not exercised by CI.
 
 ## Formulae
 
