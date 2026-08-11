@@ -120,8 +120,9 @@ brew untap keroway/tap
 - **`brew tap keroway/tap` fails / "repository not found"** — this tap must stay public; if it
   ever shows as inaccessible, it likely means a transient GitHub outage rather than a permissions
   issue on your side.
-- **Installed but the binary looks outdated** — bottles are only attached once a PR is merged via
-  `pr-pull`; run `brew update && brew upgrade tdsl` to pick up the latest.
+- **Installed but the binary looks outdated** — run `brew update && brew upgrade tdsl` to pick up
+  the latest. This tap ships prebuilt binary tarballs rather than bottles, so the formula's `url`
+  is the only source of truth for the version.
 - **Something looks broken after a formula change** — reset with `brew untap keroway/tap` followed
   by a fresh `brew tap keroway/tap && brew install tdsl`.
 
@@ -148,14 +149,21 @@ Formula build/test itself runs in pull request CI, not locally. Typical version-
 
 1. Fetch the new release's SHA256s: `curl -fsSL <asset URL> -o <asset file> && shasum -a 256 <asset file>`
 2. Update the `url` / `sha256` pairs in the formula (see `CLAUDE.md` for the per-tool asset list)
-3. Open a PR — once `brew test-bot` is green, a maintainer applies the `pr-pull` label to attach bottles and merge
+3. Open a PR — once `brew test-bot` is green, merge it (no bottle step; see the note below)
 
 ### CI workflows
+
+> **No bottles.** This tap distributes prebuilt binary tarballs, so `install` is just
+> `bin.install "tdsl"` and a bottle would only save unpacking an already-built archive.
+> The `brew pr-pull` publishing workflow inherited from the `brew tap-new` template was
+> removed in #37 — it had never run (its `pr-pull` label did not exist in this repository)
+> and no bottle host was configured. `brew test-bot --only-formulae` is kept because it is
+> what actually installs the formula and runs its `test do` block.
+
 
 | Workflow | Trigger | What it does |
 |----------|---------|---------------|
 | [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | push to `main`, pull request | Tap syntax check on macOS (Apple Silicon / Intel) and Linux (x86_64), plus a formula build test on pull requests |
-| [`publish.yml`](.github/workflows/publish.yml) (`brew pr-pull`) | `pr-pull` label applied to a pull request | Pulls the bottles built by `brew test-bot`, pushes them to `main`, and deletes the branch |
 | [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | push to `main`, pull request, weekly schedule, manual dispatch | Secret scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
 | [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | push to `main`, weekly schedule, manual dispatch | OSV vulnerability scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
 | [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | push to `main`, pull requests touching `.github/workflows/**` or `**/*.sh`, manual dispatch | Workflow/script lint via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |

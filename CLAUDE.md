@@ -10,7 +10,6 @@ Formula/                     # formula ファイル (.rb)
 .github/
   workflows/
     tests.yml                # CI (brew test-bot — tap syntax check + build test)
-    publish.yml              # brew pr-pull (pr-pull ラベルで bottle 添付 → main へ push)
     gitleaks.yml             # シークレットスキャン (keroway/.github の reusable workflow を呼び出す)
     osv-scan.yml             # OSV 脆弱性スキャン (keroway/.github の reusable workflow を呼び出す)
     workflow-lint.yml        # ワークフロー/スクリプト lint (keroway/.github の reusable workflow を呼び出す)
@@ -60,7 +59,11 @@ just check
 
 ### 4. PR 作成 → マージ
 
-CI (`brew test-bot`) が通れば `pr-pull` ラベルを付けてマージ。
+CI (`brew test-bot`) が通ればマージ。
+
+**bottle の手順はない。** この tap はビルド済みバイナリの tarball を配るため bottle の
+利得が小さく、雛形由来の `brew pr-pull` 公開ワークフローは #37 で削除した
+(`pr-pull` ラベルが存在せず一度も動いていなかった)。
 
 ## 注意事項
 
