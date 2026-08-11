@@ -29,6 +29,9 @@
 # pi coding agent はリポジトリ非共有（per-developer）
 .pi/
 .pi-subagents/
+# Codex CLI の Stop hook 設定。hooks.json が絶対パスを含む個人ローカル層で、
+# 共有すると他の環境で壊れる (keroway/agent-assets#186)
+.codex/
 
 # Environment / secrets
 .env
