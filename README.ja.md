@@ -19,7 +19,7 @@ keroway のツールのバイナリ配布を Homebrew 経由で行います。
 
 > [!NOTE]
 > CI (`tests.yml`) は現状、Linux 用 formula のビルド/テストを `ubuntu-latest` (x86_64) でのみ実行しています。
-> Linux ARM64 の bottle は公開していますが CI では検証していません。
+> Linux ARM64 の tarball は formula に登録していますが CI では検証していません。
 
 ## Formulae
 
