@@ -120,8 +120,9 @@ brew untap keroway/tap
 
 - **`brew tap keroway/tap` が失敗する / "repository not found"** — 本 tap は public を維持しています。
   もしアクセスできない状態を見かけたら、権限の問題ではなく GitHub 側の一時的な障害である可能性が高いです。
-- **インストールはできたがバイナリが古く見える** — bottle は PR が `pr-pull` でマージされたときにのみ
-  添付されます。`brew update && brew upgrade tdsl` で最新を取得してください。
+- **インストールはできたがバイナリが古く見える** — `brew update && brew upgrade tdsl` で
+  最新を取得してください。この tap は bottle ではなくビルド済みバイナリの tarball を配布するため、
+  formula の `url` がバージョンの唯一の出所です。
 - **formula 変更後に何かおかしい** — `brew untap keroway/tap` でリセットし、
   `brew tap keroway/tap && brew install tdsl` でやり直してください。
 
@@ -149,14 +150,22 @@ formula の build/test 自体はローカルではなく Pull Request の CI が
 
 1. 新リリースの SHA256 を取得: `curl -fsSL <アセット URL> -o <アセットファイル> && shasum -a 256 <アセットファイル>`
 2. formula の `url` / `sha256` を更新（対象アセット一覧は `CLAUDE.md` を参照）
-3. PR を作成 — `brew test-bot` が通ったら、メンテナが `pr-pull` ラベルを付与し bottle 添付とマージが行われます
+3. PR を作成 — `brew test-bot` が通ったらマージします（bottle の手順はありません。下の注記を参照）
 
 ### CI ワークフロー
+
+> **bottle は使いません。** この tap が配るのはビルド済みバイナリの tarball で、
+> `install` は実質 `bin.install "tdsl"` だけです。bottle が節約するのは
+> 「すでにビルド済みのアーカイブを展開する手間」だけなので利得が小さく、
+> `brew tap-new` の雛形由来の `brew pr-pull` 公開ワークフローは #37 で削除しました
+> （発火条件の `pr-pull` ラベルがこのリポジトリに存在せず、一度も動いていなかった）。
+> `brew test-bot --only-formulae` は残しています — formula を実際に install して
+> `test do` を走らせる唯一のステップだからです。
+
 
 | ワークフロー | トリガー | 内容 |
 |--------------|----------|------|
 | [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | `main` への push / Pull Request | macOS (Apple Silicon / Intel) と Linux (x86_64) での tap 構文チェック、および Pull Request 時の formula ビルドテスト |
-| [`publish.yml`](.github/workflows/publish.yml) (`brew pr-pull`) | Pull Request への `pr-pull` ラベル付与 | `brew test-bot` がビルドした bottle を取り込んで `main` に push し、ブランチを削除 |
 | [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | `main` への push / Pull Request / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるシークレットスキャン |
 | [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | `main` への push / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow による OSV 脆弱性スキャン |
 | [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | `main` への push / `.github/workflows/**`・`**/*.sh` を変更する Pull Request / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるワークフロー/スクリプト lint |
