@@ -32,6 +32,10 @@
 # Codex CLI の Stop hook 設定。hooks.json が絶対パスを含む個人ローカル層で、
 # 共有すると他の環境で壊れる (keroway/agent-assets#186)
 .codex/
+# agent-assets symlink (~/.agents) のローカル生成物。末尾スラッシュだとリポジトリ直下の
+# シンボリックリンクにマッチしないため、ルート限定パターンにする
+# (CodeRabbit 指摘、keroway/timeline-dsl-lp@2b1f2c0 参照)。
+/.agents
 
 # Environment / secrets
 .env
