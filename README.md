@@ -142,8 +142,12 @@ just check
 # = brew test-bot --only-tap-syntax + brew style Formula/*.rb
 ```
 
-lefthook runs `brew style` on `pre-commit` and `brew audit --strict` on `pre-push` automatically,
-so most style/audit issues surface before you even push.
+lefthook runs `brew style` on `pre-commit` and `brew test-bot --only-tap-syntax` on `pre-push`
+automatically, so most style/syntax issues surface before you even push. (`brew audit --strict
+Formula/*.rb` is no longer usable here: current Homebrew disables the path form of `brew audit`,
+and the name form only inspects the tapped clone under `/opt/homebrew/Library/Taps/`, not your
+working tree's uncommitted changes.) Formula build/test correctness is verified by CI
+(`brew test-bot --only-formulae` in `tests.yml`, on PRs only).
 
 Formula build/test itself runs in pull request CI, not locally. Typical version-bump flow:
 

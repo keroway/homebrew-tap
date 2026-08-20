@@ -26,5 +26,6 @@ formula のバージョンを上げた場合のみ記入。それ以外の PR �
 
 - [ ] `brew install --build-from-source Formula/tdsl.rb`
 - [ ] `brew test Formula/tdsl.rb`
-- [ ] `brew audit --strict Formula/tdsl.rb`
+<!-- brew audit --strict Formula/tdsl.rb は現行 Homebrew では path 形式が無効化されており実行できない。
+     formula の audit/build/test の正しさは `brew test-bot` CI (tests.yml) に委ねる。 -->
 - [ ] `brew test-bot` CI 通過
