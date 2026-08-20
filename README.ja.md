@@ -142,8 +142,13 @@ just check
 # = brew test-bot --only-tap-syntax + brew style Formula/*.rb
 ```
 
-lefthook が `pre-commit` で `brew style`、`pre-push` で `brew audit --strict` を自動実行するため、
-push する前にほとんどのスタイル/audit 上の問題が検出されます。
+lefthook が `pre-commit` で `brew style`、`pre-push` で `brew test-bot --only-tap-syntax` を
+自動実行するため、push する前にほとんどのスタイル/構文上の問題が検出されます
+（`brew audit --strict Formula/*.rb` は現行 Homebrew では使えません: path 形式の
+`brew audit` は無効化されており、name 形式は `/opt/homebrew/Library/Taps/` 配下の
+タップ済みクローンを検査するため、作業ツリーの未コミット変更は検証できません）。
+formula の build/test の正しさは CI（`tests.yml` の `brew test-bot --only-formulae`、
+PR 時のみ）が検証します。
 
 formula の build/test 自体はローカルではなく Pull Request の CI が実行します。
 バージョンアップの典型的なフロー:
