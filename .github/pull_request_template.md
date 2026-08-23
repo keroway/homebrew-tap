@@ -16,7 +16,6 @@
 formula のバージョンを上げた場合のみ記入。それ以外の PR はこのセクションを削除してください。
 -->
 
-- [ ] `version` を更新した
 - [ ] `tdsl-macos-aarch64.tar.gz` の SHA256 を更新した（`on_macos` / arm64）
 - [ ] `tdsl-macos-x86_64.tar.gz` の SHA256 を更新した（`on_macos` / x86_64）
 - [ ] `tdsl-linux-aarch64.tar.gz` の SHA256 を更新した（`on_linux` / arm64）
