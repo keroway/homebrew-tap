@@ -48,5 +48,9 @@ class Tdsl < Formula
       span main 10..50 "test span" {};
     EOS
     assert_match "lanes", shell_output("#{bin}/tdsl build #{testpath}/test.tdsl --pretty")
+
+    assert_path_exists bash_completion/"tdsl"
+    assert_path_exists zsh_completion/"_tdsl"
+    assert_path_exists fish_completion/"tdsl.fish"
   end
 end
