@@ -128,7 +128,7 @@ brew untap keroway/tap
 
 ## Reporting issues
 
-- **Formula problems** (install / build / bottle / formula syntax): open an issue in this repository — <https://github.com/keroway/homebrew-tap/issues>
+- **Formula problems** (install / build / formula syntax): open an issue in this repository — <https://github.com/keroway/homebrew-tap/issues>
 - **Tool bugs or feature requests** (the actual binary behavior): file them in the upstream repository, e.g. <https://github.com/keroway/timeline-dsl/issues> for `tdsl`
 - **Security vulnerabilities**: see [SECURITY.md](SECURITY.md) — do not open a public issue
 

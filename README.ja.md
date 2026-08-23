@@ -128,7 +128,7 @@ brew untap keroway/tap
 
 ## Issue の報告先
 
-- **Formula 関連の問題** (インストール失敗 / ビルドエラー / bottle 不整合 / formula 構文): 本リポジトリの Issues へ — <https://github.com/keroway/homebrew-tap/issues>
+- **Formula 関連の問題** (インストール失敗 / ビルドエラー / formula 構文): 本リポジトリの Issues へ — <https://github.com/keroway/homebrew-tap/issues>
 - **ツール本体の不具合や機能要望** (バイナリの挙動): 各 upstream リポジトリへ。`tdsl` の場合は <https://github.com/keroway/timeline-dsl/issues>
 - **脆弱性の報告**: [SECURITY.md](SECURITY.md) を参照してください — 公開 Issue は使わないでください
 
