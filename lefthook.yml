@@ -10,6 +10,6 @@ pre-commit:
 
 pre-push:
   commands:
-    brew-audit:
+    tap-syntax:
       glob: "*.rb"
       run: brew test-bot --only-tap-syntax
