@@ -28,6 +28,15 @@ class Tdsl < Formula
     generate_completions_from_executable(bin/"tdsl", "completions")
   end
 
+  def caveats
+    <<~EOS
+      Bash, zsh, and fish completions for `tdsl` were generated, but Homebrew
+      does not auto-link completions from external taps by default. Run this
+      once to enable them:
+        brew completions link
+    EOS
+  end
+
   test do
     assert_match "tdsl", shell_output("#{bin}/tdsl --version")
     (testpath/"test.tdsl").write <<~EOS
