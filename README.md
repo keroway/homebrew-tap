@@ -17,10 +17,6 @@ This tap distributes binaries built from keroway's tools.
 | macOS | Apple Silicon (arm64) / Intel (x86_64) |
 | Linux | ARM64 / x86_64 |
 
-> [!NOTE]
-> CI (`tests.yml`) currently builds and tests Linux formulae on `ubuntu-latest` (x86_64) only.
-> The Linux ARM64 tarball is published in the formula but not exercised by CI.
-
 ## Formulae
 
 | Formula | Upstream | Description |

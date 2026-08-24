@@ -17,10 +17,6 @@ keroway のツールのバイナリ配布を Homebrew 経由で行います。
 | macOS | Apple Silicon (arm64) / Intel (x86_64) |
 | Linux | ARM64 / x86_64 |
 
-> [!NOTE]
-> CI (`tests.yml`) は現状、Linux 用 formula のビルド/テストを `ubuntu-latest` (x86_64) でのみ実行しています。
-> Linux ARM64 の tarball は formula に登録していますが CI では検証していません。
-
 ## Formulae
 
 | Formula | Upstream | 説明 |
