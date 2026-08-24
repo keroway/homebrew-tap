@@ -3,11 +3,10 @@
 default:
     @just --list
 
-build:
-    for f in Formula/*.rb; do brew install --build-from-source "$f"; done
-
-test:
-    for f in Formula/*.rb; do brew test "$f"; done
+# build/test はここでは提供しない: `brew install`/`brew test` は path 形式の
+# formula (`Formula/*.rb`) を「tap 未登録」として拒否するため、作業ツリーの
+# 未コミット変更を検証できない。formula の build/test 検証は CI
+# (`tests.yml` の `brew test-bot --only-formulae`, PR 時のみ) に委ねる。
 
 lint:
     brew style Formula/*.rb

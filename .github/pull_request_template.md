@@ -23,8 +23,9 @@ formula のバージョンを上げた場合のみ記入。それ以外の PR �
 
 ## 検証
 
-- [ ] `brew install --build-from-source Formula/tdsl.rb`
-- [ ] `brew test Formula/tdsl.rb`
-<!-- brew audit --strict Formula/tdsl.rb は現行 Homebrew では path 形式が無効化されており実行できない。
-     formula の audit/build/test の正しさは `brew test-bot` CI (tests.yml) に委ねる。 -->
+<!-- brew audit --strict / brew install --build-from-source / brew test は、いずれも
+     path 形式 (Formula/tdsl.rb) の formula を「tap 未登録」として拒否し、現行
+     Homebrew では実行できない。formula の audit/build/test の正しさは
+     `brew test-bot` CI (tests.yml) に委ねる。 -->
+- [ ] `just check`（`brew test-bot --only-tap-syntax` + `brew style Formula/*.rb`）通過
 - [ ] `brew test-bot` CI 通過
