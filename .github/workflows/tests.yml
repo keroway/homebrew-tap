@@ -5,6 +5,10 @@ on:
     branches:
       - main
   pull_request:
+  schedule:
+    # release asset の失効 (リンク切れ) を formula 未変更の期間でも検知する。
+    # gitleaks (毎週月曜 00:17 UTC) / osv-scan (毎週月曜 06:00 UTC) とずらす。
+    - cron: "0 3 * * 1"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -50,4 +54,4 @@ jobs:
       # (#37)。bottle だけを外す flag は brew test-bot に無いため、ステップ自体は
       # 残す。落とすと install/test の検証まで失われる。
       - run: brew test-bot --only-formulae
-        if: github.event_name == 'pull_request' || github.event_name == 'push'
+        if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'schedule'
