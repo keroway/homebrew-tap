@@ -49,6 +49,10 @@ class Tdsl < Formula
     EOS
     assert_match "lanes", shell_output("#{bin}/tdsl build #{testpath}/test.tdsl --pretty")
 
+    system bin/"tdsl", "render", testpath/"test.tdsl", "-o", testpath/"out.html"
+    assert_path_exists testpath/"out.html"
+    assert_match "<svg", (testpath/"out.html").read
+
     assert_path_exists bash_completion/"tdsl"
     assert_path_exists zsh_completion/"_tdsl"
     assert_path_exists fish_completion/"tdsl.fish"
