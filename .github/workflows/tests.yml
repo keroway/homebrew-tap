@@ -50,4 +50,4 @@ jobs:
       # (#37)。bottle だけを外す flag は brew test-bot に無いため、ステップ自体は
       # 残す。落とすと install/test の検証まで失われる。
       - run: brew test-bot --only-formulae
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
