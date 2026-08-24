@@ -22,6 +22,8 @@ jobs:
         include:
           - os: ubuntu-latest
             container: ghcr.io/homebrew/brew@sha256:a82c987f23b4a955d879c4ec53ea74326e7ad86ca28da84747c959b336e4b358 # main, pinned 2026-08-24
+          - os: ubuntu-24.04-arm
+            container: ghcr.io/homebrew/brew@sha256:a82c987f23b4a955d879c4ec53ea74326e7ad86ca28da84747c959b336e4b358 # main, pinned 2026-08-24
     runs-on: ${{ matrix.os }}
     container: ${{ matrix.container }}
     permissions:
