@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   scan:
-    uses: keroway/.github/.github/workflows/reusable-osv-scan.yml@main # zizmor: ignore[unpinned-uses] — 同一アカウント内の自前 reusable workflow。SHA ピン化は Phase 2 で検討
+    uses: keroway/.github/.github/workflows/reusable-osv-scan.yml@51a62605f203dab6f503a5f4279aed289458d873 # main, pinned 2026-08-24
     with:
       # ADR-0028: Formula だけのリポジトリはスキャン対象を持たない。「対象なし」だけを成功扱いにする。
       allow-no-package-sources: true
