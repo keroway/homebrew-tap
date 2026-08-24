@@ -57,8 +57,8 @@
   名前解決形式（`brew audit keroway/tap/tdsl`）は `/opt/homebrew/Library/Taps/`
   配下にタップされた**別クローン**を検査するため、作業ツリーの未コミット変更を
   検証できない。CI（`tests.yml` の `brew test-bot --only-formulae`、PR 時のみ）に委ねる。
-  `justfile check` / `lefthook.yml` の pre-push はこの問題を抱えたままで、
-  別 issue で追跡する。
+  `justfile check` / `lefthook.yml` の pre-push は既に `brew test-bot --only-tap-syntax`
+  に置き換え済みで、この問題を回避している。
 - **`brew test` / `brew install --build-from-source`**: ネットワーク・ビルド時間が
   Stop hook の予算（~10-60s）を超える。CI に委ねる。
 - **`typos`**: Formula 内のパッケージ名・URL 等で誤検出しやすく、blocking にすると
