@@ -166,10 +166,10 @@ formula の build/test 自体はローカルではなく Pull Request の CI が
 
 | ワークフロー | トリガー | 内容 |
 |--------------|----------|------|
-| [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | `main` への push / Pull Request | macOS (Apple Silicon / Intel) と Linux (x86_64) での tap 構文チェック、および Pull Request 時の formula ビルドテスト |
+| [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | `main` への push / Pull Request / 週次スケジュール | macOS (Apple Silicon / Intel) と Linux (x86_64 / ARM64) での tap 構文チェック、および Pull Request・push・週次スケジュール時の formula ビルドテスト |
 | [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | `main` への push / Pull Request / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるシークレットスキャン |
-| [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | `main` への push / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow による OSV 脆弱性スキャン |
-| [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | `main` への push / `.github/workflows/**`・`**/*.sh` を変更する Pull Request / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるワークフロー/スクリプト lint |
+| [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | `main` への push / Pull Request / 週次スケジュール / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow による OSV 脆弱性スキャン |
+| [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | `main` への push / Pull Request / 手動実行 | [`keroway/.github`](https://github.com/keroway/.github) の共通 reusable workflow によるワークフロー/スクリプト lint |
 
 ## ドキュメント
 

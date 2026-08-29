@@ -163,10 +163,10 @@ Formula build/test itself runs in pull request CI, not locally. Typical version-
 
 | Workflow | Trigger | What it does |
 |----------|---------|---------------|
-| [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | push to `main`, pull request | Tap syntax check on macOS (Apple Silicon / Intel) and Linux (x86_64), plus a formula build test on pull requests |
+| [`tests.yml`](.github/workflows/tests.yml) (`brew test-bot`) | push to `main`, pull request, weekly schedule | Tap syntax check on macOS (Apple Silicon / Intel) and Linux (x86_64 / ARM64), plus a formula build test on pull requests, push, and the weekly schedule |
 | [`gitleaks.yml`](.github/workflows/gitleaks.yml) (`secret-scan`) | push to `main`, pull request, weekly schedule, manual dispatch | Secret scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
-| [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | push to `main`, weekly schedule, manual dispatch | OSV vulnerability scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
-| [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | push to `main`, pull requests touching `.github/workflows/**` or `**/*.sh`, manual dispatch | Workflow/script lint via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
+| [`osv-scan.yml`](.github/workflows/osv-scan.yml) (`osv-scan`) | push to `main`, pull request, weekly schedule, manual dispatch | OSV vulnerability scan via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
+| [`workflow-lint.yml`](.github/workflows/workflow-lint.yml) (`workflow-lint`) | push to `main`, pull request, manual dispatch | Workflow/script lint via the shared reusable workflow in [`keroway/.github`](https://github.com/keroway/.github) |
 
 ## Documentation
 
