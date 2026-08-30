@@ -130,8 +130,8 @@ brew untap keroway/tap
 
 ## Contributing
 
-Pull requests are welcome. `just --list` shows all local tasks (`build` / `test` / `lint` /
-`format` / `check`); before opening a PR, run:
+Pull requests are welcome. `just --list` shows all local tasks (`lint` / `format` / `check`);
+before opening a PR, run:
 
 ```sh
 just check

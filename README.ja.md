@@ -130,8 +130,8 @@ brew untap keroway/tap
 
 ## コントリビュート
 
-Pull Request を歓迎します。`just --list` でローカルタスク一覧（`build` / `test` / `lint` /
-`format` / `check`）が確認できます。PR を出す前に以下を実行してください:
+Pull Request を歓迎します。`just --list` でローカルタスク一覧（`lint` / `format` / `check`）が
+確認できます。PR を出す前に以下を実行してください:
 
 ```sh
 just check
