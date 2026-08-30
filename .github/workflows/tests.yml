@@ -16,6 +16,11 @@ concurrency:
 
 jobs:
   test-bot:
+    # matrix.include で container (digest 込み) を追加すると、既定の job 名
+    # (matrix 全軸の値を連結したもの) にダイジェストが混入し、required status
+    # check として使えなくなる (#84)。name を明示し matrix.os のみを使うことで
+    # container の値をダイジェスト再ピン後も安定させる。
+    name: test-bot (${{ matrix.os }})
     strategy:
       matrix:
         os: [ macos-15-intel, macos-26 ]
