@@ -145,9 +145,10 @@ just check
 `brew audit` は無効化されており、name 形式は `/opt/homebrew/Library/Taps/` 配下の
 タップ済みクローンを検査するため、作業ツリーの未コミット変更は検証できません）。
 formula の build/test の正しさは CI（`tests.yml` の `brew test-bot --only-formulae`、
-PR 時のみ）が検証します。
+pull request・main への push・週次 schedule で実行）が検証します。
 
-formula の build/test 自体はローカルではなく Pull Request の CI が実行します。
+formula の build/test 自体はローカルではなく、pull request・main への push・週次
+schedule の CI が実行します。
 バージョンアップの典型的なフロー:
 
 1. 新リリースの SHA256 を取得: `curl -fsSL <アセット URL> -o <アセットファイル> && shasum -a 256 <アセットファイル>`
