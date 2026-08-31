@@ -144,9 +144,11 @@ automatically, so most style/syntax issues surface before you even push. (`brew 
 Formula/*.rb` is no longer usable here: current Homebrew disables the path form of `brew audit`,
 and the name form only inspects the tapped clone under `/opt/homebrew/Library/Taps/`, not your
 working tree's uncommitted changes.) Formula build/test correctness is verified by CI
-(`brew test-bot --only-formulae` in `tests.yml`, on PRs only).
+(`brew test-bot --only-formulae` in `tests.yml`, on pull requests, pushes to `main`, and
+a weekly schedule).
 
-Formula build/test itself runs in pull request CI, not locally. Typical version-bump flow:
+Formula build/test itself runs in CI (pull request, push to `main`, or the weekly
+schedule), not locally. Typical version-bump flow:
 
 1. Fetch the new release's SHA256s: `curl -fsSL <asset URL> -o <asset file> && shasum -a 256 <asset file>`
 2. Update the `url` / `sha256` pairs in the formula (see `CLAUDE.md` for the per-tool asset list)

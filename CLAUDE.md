@@ -54,7 +54,7 @@ curl -sL <URL> | shasum -a 256
 ```sh
 just check
 # = brew test-bot --only-tap-syntax + brew style Formula/*.rb
-# Formula の build / test は pull request CI が実行する。
+# Formula の build / test は pull request・main への push・週次 schedule の CI が実行する。
 ```
 
 ### 4. PR 作成 → マージ
