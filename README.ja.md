@@ -138,7 +138,8 @@ just check
 # = brew test-bot --only-tap-syntax + brew style Formula/*.rb
 ```
 
-lefthook が `pre-commit` で `brew style`、`pre-push` で `brew test-bot --only-tap-syntax` を
+初回セットアップとして `brew install lefthook && lefthook install` を実行してください。
+実行後は lefthook が `pre-commit` で `brew style`、`pre-push` で `brew test-bot --only-tap-syntax` を
 自動実行するため、push する前にほとんどのスタイル/構文上の問題が検出されます
 （`brew audit --strict Formula/*.rb` は現行 Homebrew では使えません: path 形式の
 `brew audit` は無効化されており、name 形式は `/opt/homebrew/Library/Taps/` 配下の

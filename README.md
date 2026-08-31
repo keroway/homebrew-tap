@@ -138,7 +138,8 @@ just check
 # = brew test-bot --only-tap-syntax + brew style Formula/*.rb
 ```
 
-lefthook runs `brew style` on `pre-commit` and `brew test-bot --only-tap-syntax` on `pre-push`
+One-time setup: `brew install lefthook && lefthook install`. Once installed, lefthook runs
+`brew style` on `pre-commit` and `brew test-bot --only-tap-syntax` on `pre-push`
 automatically, so most style/syntax issues surface before you even push. (`brew audit --strict
 Formula/*.rb` is no longer usable here: current Homebrew disables the path form of `brew audit`,
 and the name form only inspects the tapped clone under `/opt/homebrew/Library/Taps/`, not your
