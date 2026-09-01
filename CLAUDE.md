@@ -15,7 +15,7 @@ Formula/                     # formula ファイル (.rb)
     workflow-lint.yml        # ワークフロー/スクリプト lint (keroway/.github の reusable workflow を呼び出す)
   renovate.json5             # Renovate による依存関係の自動更新設定
   pull_request_template.md   # PR テンプレート
-justfile                     # ローカルタスク (build/test/lint/format/check) — brew CLI への薄い委譲
+justfile                     # ローカルタスク (lint/format/check) — brew CLI への薄い委譲。formula の build/test は CI が実行
 lefthook.yml                 # pre-commit: brew style / pre-push: brew test-bot --only-tap-syntax
 README.md                    # README (英語版)
 README.ja.md                 # README (日本語版)
