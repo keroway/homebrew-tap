@@ -25,6 +25,16 @@ class Tdsl < Formula
 
   def install
     bin.install "tdsl"
+    generate_completions_from_executable(bin/"tdsl", "completions")
+  end
+
+  def caveats
+    <<~EOS
+      Bash, zsh, and fish completions for `tdsl` were generated, but Homebrew
+      does not auto-link completions from external taps by default. Run this
+      once to enable them:
+        brew completions link
+    EOS
   end
 
   test do
@@ -38,5 +48,13 @@ class Tdsl < Formula
       span main 10..50 "test span" {};
     EOS
     assert_match "lanes", shell_output("#{bin}/tdsl build #{testpath}/test.tdsl --pretty")
+
+    system bin/"tdsl", "render", testpath/"test.tdsl", "-o", testpath/"out.html"
+    assert_path_exists testpath/"out.html"
+    assert_match "<svg", (testpath/"out.html").read
+
+    assert_path_exists bash_completion/"tdsl"
+    assert_path_exists zsh_completion/"_tdsl"
+    assert_path_exists fish_completion/"tdsl.fish"
   end
 end
