@@ -15,5 +15,24 @@
       matchUpdateTypes: ["minor", "patch"],
       groupName: "github-actions",
     },
+    {
+      description: "Homebrew/actions の4セグメントタグは github-actions manager が3セグメントに切り詰めるため、専用 custom manager に委譲する",
+      matchManagers: ["github-actions"],
+      matchDepNames: ["Homebrew/actions"],
+      enabled: false,
+    },
+  ],
+  customManagers: [
+    {
+      customType: "regex",
+      managerFilePatterns: ["/^\\.github\\/workflows\\/tests\\.yml$/"],
+      matchStrings: [
+        "(?<indentation>[ \\t]*)uses:\\s*(?<depName>Homebrew/actions/setup-homebrew)@(?<currentDigest>[a-f0-9]{40})\\s+#\\s*(?<currentValue>\\d+\\.\\d+\\.\\d+\\.\\d+)",
+      ],
+      datasourceTemplate: "github-tags",
+      packageNameTemplate: "Homebrew/actions",
+      versioningTemplate: "docker",
+      autoReplaceStringTemplate: "{{{indentation}}}uses: {{{depName}}}@{{{newDigest}}} # {{{newValue}}}",
+    },
   ],
 }
