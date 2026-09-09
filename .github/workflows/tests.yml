@@ -68,9 +68,17 @@ jobs:
       # 引数無しの --only-formulae は「テスト対象を検出できない」エラーで
       # 落ちる。schedule の目的 (release asset 失効の検知) を満たすには
       # tap 内の全 formula を明示的に指定する必要がある。
+      #
+      # `find Formula ...` は $GITHUB_WORKSPACE を基準にしていたが、この job には
+      # `actions/checkout` が無く、setup-homebrew はリポジトリを $GITHUB_WORKSPACE
+      # ではなく Homebrew の Taps ディレクトリ配下にチェックアウトするため、
+      # $GITHUB_WORKSPACE に Formula/ が存在せず失敗していた (#102)。
+      # setup-homebrew の `repository-path` 出力が指す実際のチェックアウト先を使う。
       - run: |
-          find Formula -maxdepth 1 -name '*.rb' -print0 \
+          find "$REPOSITORY_PATH/Formula" -maxdepth 1 -name '*.rb' -print0 \
             | xargs -0 -n1 basename \
             | sed 's/\.rb$//' \
             | xargs brew test-bot --only-formulae
         if: github.event_name == 'schedule'
+        env:
+          REPOSITORY_PATH: ${{ steps.set-up-homebrew.outputs.repository-path }}
