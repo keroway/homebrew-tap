@@ -13,6 +13,9 @@
 # Homebrew local artifacts
 *.bottle.*
 
+# Stop hook 系の残骸と推定される、原因未特定の未追跡ファイル(keroway/homebrew-tap#100)
+steps_output.txt
+
 # settings.json / agents / commands / rules / hooks / skills はチーム共有する Claude Code 設定としてトラッキング。
 # settings.local.json / worktrees / lock ファイルなどのセッションローカルなものは ignore のまま。
 .claude/*
