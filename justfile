@@ -16,6 +16,10 @@ format:
     brew style --fix Formula/*.rb
 
 # tap syntax / style をまとめて実行（PR 前の全通し確認）
+# brew test-bot は cwd に steps_output.txt を書き出す (#108)。CI は
+# actions/checkout が無く cwd が空の runner workspace のため無害だが、
+# ここでは cwd がリポジトリ直下になるため作業ツリーへ残留する。
+# 一時ディレクトリに退避して実行する。
 check:
-    brew test-bot --only-tap-syntax
+    tmp_dir=$(mktemp -d); (cd "$tmp_dir" && brew test-bot --only-tap-syntax); status=$?; rm -rf "$tmp_dir"; exit $status
     brew style Formula/*.rb
