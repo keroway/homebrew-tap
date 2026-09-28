@@ -21,4 +21,4 @@ concurrency:
 
 jobs:
   gitleaks:
-    uses: keroway/.github/.github/workflows/reusable-gitleaks.yml@51a62605f203dab6f503a5f4279aed289458d873 # main, pinned 2026-08-24
+    uses: keroway/.github/.github/workflows/reusable-gitleaks.yml@f46116661fa12e4ff3911c40970cf0f8510e9823 # v1.0.0
