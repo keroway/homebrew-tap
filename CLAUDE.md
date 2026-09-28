@@ -71,3 +71,9 @@ CI (`brew test-bot`) が通ればマージ。
   用意しており、`brew readall --os=all --arch=all` の対象マトリクスを全てカバーしているため、
   トップレベルの `url`/`sha256` は不要
 - このリポジトリは **public 必須**（`brew tap` はパブリックリポジトリのみ対応）
+
+## Codex 向け運用ルール
+
+Codex 向けの横断運用ルールは `keroway/CLAUDE.md` ではなく
+[agent-assets `docs/codex-common-instructions.md`](https://github.com/keroway/agent-assets/blob/main/docs/codex-common-instructions.md)
+を正典とする（Codex は git ルートより上の AGENTS.md を読まないため）。
