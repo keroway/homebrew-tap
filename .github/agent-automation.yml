@@ -7,3 +7,7 @@ max_issues_per_cycle: 1
 # 以前あった `interval: 30m` は**どのコードからも読まれていなかった**ため外した
 # (keroway/agent-assets#184)。実行間隔はここでは決まらない: 横断ループの
 # ペースは Claude の利用枠の残量から、cron の起動間隔は launchd の設定から決まる。
+
+# Codex による非対話 issue 実装を許可する。秘密情報を扱うリポジトリでは true にしない。
+# (agent-assets#371: 既定値依存をやめて明示する。本リポジトリは秘密情報・本番デプロイ資格情報を持たない)
+allow_codex_implementation: true
