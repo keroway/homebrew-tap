@@ -5,21 +5,21 @@ class Tdsl < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/keroway/timeline-dsl/releases/download/v2.1.0/tdsl-macos-aarch64.tar.gz"
-      sha256 "5677a48eb3bb66506521735edbe3d411b44e0371ebe4b4294b8614d737ba4ce8"
+      url "https://github.com/keroway/timeline-dsl/releases/download/v3.0.0/tdsl-macos-aarch64.tar.gz"
+      sha256 "dd9b8654117f804b3c66d0453b7cfbfb7be62bdaefbd1bf29f79e4c4f564b727"
     else
-      url "https://github.com/keroway/timeline-dsl/releases/download/v2.1.0/tdsl-macos-x86_64.tar.gz"
-      sha256 "9f7c5b92104e1d2601a97b9c06dad4905c480488b96499efebc14ba9d54c363c"
+      url "https://github.com/keroway/timeline-dsl/releases/download/v3.0.0/tdsl-macos-x86_64.tar.gz"
+      sha256 "90e0c37ef98df1985fcb40e17eb759eee8013b4eaedfc1d6689f10112f9c006b"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/keroway/timeline-dsl/releases/download/v2.1.0/tdsl-linux-aarch64.tar.gz"
-      sha256 "ee7102edd4617dfcbe71d9ee03aeabf026c0836d7094fe7fd38ba2724722776a"
+      url "https://github.com/keroway/timeline-dsl/releases/download/v3.0.0/tdsl-linux-aarch64.tar.gz"
+      sha256 "3f60e6f4a23aa2a9bc654df6635bf61e0da2a6060b014b6f75b6f772e15f3f04"
     else
-      url "https://github.com/keroway/timeline-dsl/releases/download/v2.1.0/tdsl-linux-x86_64.tar.gz"
-      sha256 "e603e56c2387b4a22dd881047dc2a3f6a9cf0db3b5887de3f0845651dd7a6412"
+      url "https://github.com/keroway/timeline-dsl/releases/download/v3.0.0/tdsl-linux-x86_64.tar.gz"
+      sha256 "b4da156c1b955ff9dd6ff7422b15abfb14d7fb6406a56a52d4971fc626aaf1d0"
     end
   end
 
