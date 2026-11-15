@@ -12,4 +12,7 @@ pre-push:
   commands:
     tap-syntax:
       glob: "*.rb"
-      run: brew test-bot --only-tap-syntax
+      # brew test-bot は cwd に steps_output.txt を書き出す (#108 / #110)。cwd がリポジトリ
+      # 直下だと作業ツリーに残留するため、justfile の check と同じく一時ディレクトリへ退避する。
+      run: |
+        tmp_dir=$(mktemp -d); (cd "$tmp_dir" && brew test-bot --only-tap-syntax); status=$?; rm -rf "$tmp_dir"; exit $status
