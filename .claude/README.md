@@ -56,7 +56,7 @@
   形式が廃止されており（`Error: Calling brew audit [path ...] is disabled!`）、
   名前解決形式（`brew audit keroway/tap/tdsl`）は `/opt/homebrew/Library/Taps/`
   配下にタップされた**別クローン**を検査するため、作業ツリーの未コミット変更を
-  検証できない。CI（`tests.yml` の `brew test-bot --only-formulae`、PR 時のみ）に委ねる。
+  検証できない。CI（`tests.yml` の `brew test-bot --only-formulae`。pull request・main への push・週次 schedule で実行）に委ねる。
   `justfile check` / `lefthook.yml` の pre-push は既に `brew test-bot --only-tap-syntax`
   に置き換え済みで、この問題を回避している。
 - **`brew test` / `brew install --build-from-source`**: ネットワーク・ビルド時間が
