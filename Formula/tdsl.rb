@@ -38,8 +38,9 @@ class Tdsl < Formula
   end
 
   test do
-    # Formula の版と完全一致を要求する（隣接する数字・ドットへの部分一致は許容しない）。
-    assert_match(/\btdsl #{Regexp.escape(version.to_s)}(?![\d.]*\d)/, shell_output("#{bin}/tdsl --version"))
+    # Formula の版と完全一致を要求する（版の直後に英数字・ドット・ハイフン・プラスが続く
+    # 部分一致、すなわち数字の延長やプレリリース・不正な接尾辞は許容しない）。
+    assert_match(/\btdsl #{Regexp.escape(version.to_s)}(?![\w.+-])/, shell_output("#{bin}/tdsl --version"))
     (testpath/"test.tdsl").write <<~EOS
       timeline "test" {
         unit year;
